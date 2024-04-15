@@ -269,6 +269,7 @@
                     </div>
                     <div class="pricing-card-footer">
                         <span>$</span>
+                        <!-- premiumprice -->
                         <span><?php echo $premiumPrice . "/Month"; ?></span>
                     </div>
                     <a href="#" class="btn btn-primary mt-3 pricing-card-btn">Subscribe</a>
@@ -342,34 +343,43 @@
             <p class="section-subtitle">Recent Posts?</p>
             <h6 class="section-title mb-6">Blog</h6>
             <!-- blog-wrapper -->
-            <div class="blog-card">
-                <div class="blog-card-header">
-                    <img src="assets/imgs/img-1.jpg" class="blog-card-img"
+            
+                <!-- Fuctions here -->
+                <?php foreach ($blogData as $data): ?>
+                    <div class="blog-card">
+            <div class="blog-card-header">                    
+                
+                    <img src=<?php echo $data['image']; ?> class="blog-card-img"
                         alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
                 </div>
                 <div class="blog-card-body">
-                    <h5 class="blog-card-title">Consectetur adipisicing elit</h6>
-
-                        <p class="blog-card-caption">
-                            <a href="#">By: Admin</a>
-                            <a href="#"><i class="ti-heart text-danger"></i> 234</a>
-                            <a href="#"><i class="ti-comment"></i> 123</a>
+                    <h5 class="blog-card-title"><?php echo $data['title']; ?></h5>
+                    
+                    <p class="blog-card-caption">
+                    
+                        <a href="#"> <?php echo $data['author']; ?></a>
+                        <a href="#"><i class="ti-heart text-danger"></i> <?php echo $data['likes']; ?></a>
+                        <a href="#"><i class="ti-comment"></i> <?php echo $data['comments']; ?></a>
+                            
                         </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet nesciunt qui sit velit
-                            delectus voluptates, repellat ipsum culpa id deleniti. Rerum debitis facilis accusantium
-                            neque numquam mollitia modi quasi distinctio.</p>
-
-                        <p><b>Necessitatibus nihil impedit! Ex nisi eveniet, dolor aliquid consequuntur repudiandae.</b>
+                        <p><?php echo $data['text1']; ?></p>
+                        
+                        <p><b><?php if (isset($data['text2'])): ?></b>
+                            <?php endif; ?>
                         </p>
-                        <p>Magnam in repellat enim harum omnis aperiam! Explicabo illo, commodi, dolor blanditiis
-                            cupiditate harum nisi vero accusamus laudantium voluptatibus dolores quae obcaecati.</p>
+                        <p><?php if (isset($data['text3'])): ?></p>
+                            <?php endif; ?>
+                            
 
-                        <a href="#" class="blog-card-link">Read more <i class="ti-angle-double-right"></i></a>
+                        <a href="#" class="blog-card-link"><?php echo $data['read']; ?><i class="ti-angle-double-right"></i></a>
+                        
                 </div>
-            </div><!-- end of blog wrapper -->
+            </div>
+            <?php endforeach; ?>
+            <!-- end of blog wrapper -->
 
             <!-- blog-wrapper -->
-            <div class="blog-card">
+            <!-- <div class="blog-card">
                 <div class="blog-card-header">
                     <img src="assets/imgs/img-2.jpg" class="blog-card-img"
                         alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, meyawo Landing page">
@@ -393,7 +403,7 @@
 
                         <a href="#" class="blog-card-link">Read more <i class="ti-angle-double-right"></i></a>
                 </div>
-            </div><!-- end of blog wrapper -->
+            </div>end of blog wrapper -->
 
         </div><!-- end of container -->
     </section><!-- end of blog section -->
@@ -428,7 +438,8 @@
     <div class="container">
         <footer class="footer">
             <p class="mb-0">Copyright
-                <script>document.write(new Date().getFullYear())</script> &copy; <a
+                <!-- Function for date -->
+            <?php echo getCurrentYear(); "@" ?> @ <a
                     href="http://www.devcrud.com">DevCRUD</a> Distribution <a
                     href="https://themewagon.com">ThemeWagon</a>
             </p>
